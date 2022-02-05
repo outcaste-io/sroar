@@ -1,4 +1,4 @@
-module github.com/dgraph-io/sroar
+module github.com/outcaste-io/sroar
 
 go 1.16
 
