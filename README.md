@@ -16,6 +16,10 @@ outperforms RoaringBitmaps as shown in the Benchmarks section.
 
 The code borrows concepts and code from [RoaringBitmaps][Roaring].
 
+**Use [outcaste-io/issues][issues] repository to file issues for sroar.**
+
+[issues]: https://github.com/outcaste-io/issues
+
 ## Benchmarks
 
 The benchmarks were run:
