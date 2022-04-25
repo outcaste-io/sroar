@@ -102,5 +102,5 @@ func Memclr(b []uint16) {
 		return
 	}
 	p := unsafe.Pointer(&b[0])
-	memclrNoHeapPointers(p, uintptr(len(b)))
+	memclrNoHeapPointers(p, uintptr(len(b)*2))
 }
