@@ -17,9 +17,11 @@
 package sroar
 
 import (
+	"encoding/hex"
 	"fmt"
 	"math"
 	"math/bits"
+	"os"
 	"strings"
 )
 
@@ -153,6 +155,15 @@ func (c array) add(x uint16) bool {
 		}
 		// The entry at offset is the first entry, which is greater than x. Move it to the right.
 		copy(c[offset+1:], c[offset:])
+	}
+	if offset >= len(c) {
+		fmt.Printf("offset: %d len(c): %d idx: %d N: %d isFull: %v\n", offset, len(c), idx, N, c.isFull())
+		fmt.Printf("array:\n%s\n", hex.Dump(toByteSlice(c)))
+		for ei, ee := range c {
+			fmt.Printf("[%d] %d\n", ei, ee)
+		}
+		fmt.Printf("Trying to add x: %d\n", x)
+		os.Exit(1)
 	}
 	c[offset] = x
 	incrCardinality(c)
