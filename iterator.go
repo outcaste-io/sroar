@@ -54,6 +54,9 @@ func (bm *Bitmap) NewRangeIterators(numRanges int) []*Iterator {
 }
 
 func (bm *Bitmap) NewIterator() *Iterator {
+	if bm == nil {
+		return nil
+	}
 	return &Iterator{
 		bm:        bm,
 		keys:      bm.keys[indexNodeStart : indexNodeStart+bm.keys.numKeys()*2],
@@ -64,7 +67,7 @@ func (bm *Bitmap) NewIterator() *Iterator {
 }
 
 func (it *Iterator) Next() uint64 {
-	if len(it.keys) == 0 {
+	if it == nil || len(it.keys) == 0 {
 		return 0
 	}
 
